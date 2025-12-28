@@ -38,8 +38,7 @@
         }
     },
     "clock": {
-        "format": "{:%A %I:%M %p}",
-        "format-alt": "{:%d %B %Y}",
+        "format": "{:%A %I:%M %p : %d %B %Y}",
         "tooltip": false
     },
     "network": {
