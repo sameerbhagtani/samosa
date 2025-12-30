@@ -21,8 +21,6 @@ MON="eDP-1"
 
 echo "ok (index $INDEX -> $CURRENT)"
 
-hyprctl hyprpaper unload all
-hyprctl hyprpaper preload "$CURRENT"
 hyprctl hyprpaper wallpaper "$MON,$CURRENT"
 
 NEXT_INDEX=$(( (INDEX + 1) % COUNT ))
