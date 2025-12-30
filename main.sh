@@ -140,9 +140,9 @@ echo -e "\n--- Copying User Configs (Dotfiles) ---"
 sudo -u "$USER" rsync -a "$USER_CONFIGS/." "$USER_HOME/"
 
 # Place wallpaper in ~/Pictures
-echo -e "--- Copying Wallpaper to $USER_HOME/Pictures ---"
+echo -e "--- Copying wallpapers to $USER_HOME/Pictures ---"
 sudo -u "$USER" mkdir -p "$USER_HOME/Pictures"
-cp "$OTHER_FILES/wallpaper.jpg" "$USER_HOME/Pictures/wallpaper.jpg"
+cp -r "$OTHER_FILES/wallpapers" "$USER_HOME/Pictures/"
 
 # Append to bashrc
 echo -e "\n--- Appending content to ~/.bashrc ---"
@@ -152,9 +152,11 @@ cat "$OTHER_FILES/bashrc_append.txt" >> "$USER_HOME/.bashrc"
 echo -e "--- Fixing ownership of user files ---"
 chown -R "$USER:$USER" "$USER_HOME/.config" "$USER_HOME/.local" "$USER_HOME/.bashrc" "$USER_HOME/Pictures"
 
-# Make power-menu.sh executable
+# Make auto-run scripts executable
 echo -e "--- Setting Permissions for power-menu ---"
 chmod +x "$USER_HOME/.local/bin/power-menu"
+chmod +x "$USER_HOME/.local/bin/change-wallpaper"
+chmod +x "$USER_HOME/.local/bin/restore-wallpaper"
 
 # Enable Elephant services
 # echo -e "\n--- Enabling Elephant Services ---"
