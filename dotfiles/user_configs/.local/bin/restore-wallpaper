@@ -17,10 +17,11 @@ INDEX=0
 (( INDEX >= COUNT )) && INDEX=0
 
 CURRENT="${wallpapers[$INDEX]}"
-MON="eDP-1"
 
-sleep 1
+sleep 2
 
 echo "ok (index $INDEX -> $CURRENT)"
 
-hyprctl hyprpaper wallpaper "$MON,$CURRENT"
+for monitor in $(hyprctl monitors | grep 'Monitor' | awk '{ print $2 }'); do
+    hyprctl hyprpaper wallpaper "$monitor,$CURRENT"
+done
