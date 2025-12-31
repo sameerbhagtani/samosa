@@ -28,7 +28,7 @@ Start with a minimal base installation of Arch Linux. If using the official `arc
 ### Step 2: Reboot and run the install script
 
 ```bash
-curl -L https://raw.githubusercontent.com/sameerbhagtanidev/samosa/main/install.sh | sh
+curl -L https://raw.githubusercontent.com/sameerbhagtani/samosa/main/install.sh | sh
 ```
 
 ---
