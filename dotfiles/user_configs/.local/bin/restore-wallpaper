@@ -1,5 +1,4 @@
 #!/bin/bash
-
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 STATE_FILE="$HOME/.cache/hyprpaper_index"
 
@@ -17,11 +16,17 @@ INDEX=0
 (( INDEX >= COUNT )) && INDEX=0
 
 CURRENT="${wallpapers[$INDEX]}"
+MON="eDP-1"
 
-sleep 2
+sleep 1
 
 echo "ok (index $INDEX -> $CURRENT)"
 
 for monitor in $(hyprctl monitors | grep 'Monitor' | awk '{ print $2 }'); do
-    hyprctl hyprpaper wallpaper "$monitor,$CURRENT"
+	
+	hyprctl hyprpaper wallpaper "$monitor,$CURRENT"
 done
+
+sed -i "s|path =.*|path = $CURRENT|" "$HYPRLOCK_CONF"
+
+

@@ -2,9 +2,11 @@
 
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 STATE_FILE="$HOME/.cache/hyprpaper_index"
+HYPRLOCK_CONF="$HOME/.config/hypr/hyprlock.conf"
 
 mkdir -p "$(dirname "$STATE_FILE")"
 
+# Load wallpapers into array
 mapfile -t wallpapers < <(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( \
     -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" \
 \) | sort)
@@ -12,17 +14,22 @@ mapfile -t wallpapers < <(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( \
 COUNT=${#wallpapers[@]}
 [ "$COUNT" -eq 0 ] && exit 1
 
+# Get current index
 INDEX=0
 [ -f "$STATE_FILE" ] && INDEX=$(cat "$STATE_FILE")
 (( INDEX >= COUNT )) && INDEX=0
 
 CURRENT="${wallpapers[$INDEX]}"
 
-echo "ok (index $INDEX -> $CURRENT)"
-
+hyprctl hyprpaper preload "$CURRENT"
+# 1. Update Hyprpaper (Desktop Wallpaper)
 for monitor in $(hyprctl monitors | grep 'Monitor' | awk '{ print $2 }'); do
-    hyprctl hyprpaper wallpaper "$monitor,$CURRENT"
+	hyprctl	hyprpaper wallpaper "$monitor,$CURRENT"
 done
+# 2. Update Hyprlock Config (Lockscreen Wallpaper)
+# This searches for 'path =' inside the background block and replaces it
+sed -i "s|path =.*|path = $CURRENT|" "$HYPRLOCK_CONF"
 
+# Save next index
 NEXT_INDEX=$(( (INDEX + 1) % COUNT ))
 echo "$NEXT_INDEX" > "$STATE_FILE"
