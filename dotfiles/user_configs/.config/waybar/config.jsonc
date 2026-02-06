@@ -4,8 +4,8 @@
     "position": "top",
     "spacing": 0,
     "height": 26,
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
+    "modules-left": ["clock"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         "group/tray-expander",
         "bluetooth",
@@ -38,7 +38,7 @@
         }
     },
     "clock": {
-        "format": "{:%I:%M %p %A : %d %B %Y}",
+        "format": "{:%I:%M %p %a : %d %b %Y}",
         "tooltip": false
     },
     "network": {
