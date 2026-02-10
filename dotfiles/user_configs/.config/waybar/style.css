@@ -1,79 +1,138 @@
 * {
     color: #ffffff;
-
-    border: none;
-    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "CaskaydiaCove Nerd Font";
+    font-size: 14px;
+    font-weight: bold;
     min-height: 0;
-    font-family: "CaskaydiaCove Nerd Font";
-    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 window#waybar {
     background-color: transparent;
 }
 
-.modules-left {
-    margin-left: 8px;
+
+#clock,
+#workspaces,
+#mpris,
+#custom-expand-icon {
+    background-color: #000000;
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin: 4px 3px;
 }
 
 .modules-right {
-    margin-right: 8px;
-}
-
-#workspaces button {
-    all: initial;
-    padding: 0 20px;
-    margin: 0 3px;
-    min-width: 9px;
-
     background-color: #000000;
-    border-radius: 5px;
+    margin: 4px 10px; 
+    padding: 2px 5px; 
+    border-radius: 20px; 
 }
 
-#workspaces button.empty {
-    opacity: 0.5;
-}
-
-#clock {
-    margin-left: 8.75px;
-    padding: 0 20px;
-
-    background-color: #000000;
-    border-radius: 5px;
-}
 
 #tray,
 #battery,
 #network,
 #bluetooth,
 #pulseaudio {
-    min-width: 12px;
-    margin: 0 3px;
-    padding: 0 20px;
+    background-color: transparent;
+    color: #ffffff;
 
-    background-color: #000000;
-    border-radius: 5px;
 
+    padding: 0 8px;
+    margin: 0; 
+    min-height: 24px; 
 }
 
-#custom-expand-icon {
-    margin-right: 7px;
-    padding: 0 20px;
 
-    background-color: #000000;
-    border-radius: 5px;
-
+#tray:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 10px; 
 }
 
-tooltip {
-    padding: 2px;
-    background-color: #000000;
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
 }
 
-#tray menu {
-    background-color: #000000;
-}
 
-.hidden {
+
+#mpris {
+    min-width: 0px;
+    padding: 0px;
+    margin: 4px 0px;
     opacity: 0;
+    font-size: 0px;
+}
+
+#mpris.playing,
+#mpris.paused {
+    min-width: 80px;
+    padding: 4px 16px;
+    margin: 4px 3px;
+    opacity: 1;
+    font-size: 14px;
+    background-color: #000000;
+}
+
+
+
+#workspaces {
+    padding: 0px 8px;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 0px 2px;
+    border-radius: 15px;
+    color: #666666;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    min-width: 20px; 
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+#tray {
+    background-color: #000000;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #a6e3a1; 
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8; 
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f38ba8;
+        color: #000000;
+    }
 }

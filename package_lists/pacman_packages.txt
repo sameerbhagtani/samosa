@@ -24,6 +24,7 @@ hyprshot
 hyprpicker
 blueberry
 swaync
+swayosd
 wl-clipboard
 noto-fonts
 noto-fonts-emoji
