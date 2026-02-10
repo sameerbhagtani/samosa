@@ -59,8 +59,6 @@
 
     "clock": {
         "format": "{:%I:%M %p | %d %b}",
-        // 1. FORCE HUGE TEXT SIZE HERE (16pt or larger)
-        // We use 'tt' (monospace) to keep the days aligned perfectly
         "tooltip-format": "<span size='16pt' font='JetBrainsMono Nerd Font'><tt>{calendar}</tt></span>",
 
         "calendar": {
