@@ -4,8 +4,6 @@
     font-size: 14px;
     font-weight: bold;
     min-height: 0;
-
-    /* The "Bouncy" Animation - This is the key to the saneAspect feel */
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -13,37 +11,25 @@ window#waybar {
     background-color: transparent;
 }
 
-/* === The Modules === */
 
-/* Base style for all "Pills" */
 #clock,
 #workspaces,
 #mpris,
 #custom-expand-icon {
     background-color: #000000;
-    border-radius: 20px; /* Increased radius for "Island" look */
+    border-radius: 20px;
     padding: 4px 12px;
     margin: 4px 3px;
 }
-/* #group-tray-expander,
-#battery,
-#network,
-#bluetooth,
-#pulseaudio, */
 
-/* --- MERGED RIGHT MODULES (The One Big Pill) --- */
-
-/* --- UNIFIED RIGHT PILL (The Container) --- */
-/* This makes the whole right side one black pill */
 .modules-right {
     background-color: #000000;
-    margin: 4px 10px; /* 4px top/bottom, 10px from screen edge */
-    padding: 2px 5px; /* Space inside the pill */
-    border-radius: 20px; /* Round corners for the container */
+    margin: 4px 10px; 
+    padding: 2px 5px; 
+    border-radius: 20px; 
 }
 
-/* --- INDIVIDUAL ICONS (Transparent & Centered) --- */
-/* Remove the black box from icons so they blend into the container */
+
 #tray,
 #battery,
 #network,
@@ -52,24 +38,23 @@ window#waybar {
     background-color: transparent;
     color: #ffffff;
 
-    /* Alignment Fixes */
-    padding: 0 8px; /* Spacing between icons */
-    margin: 0; /* No gaps between hover areas */
-    min-height: 24px; /* Ensures vertical centering */
+
+    padding: 0 8px;
+    margin: 0; 
+    min-height: 24px; 
 }
 
-/* --- HOVER EFFECT --- */
-/* Highlights the icon with a light grey box when hovered */
+
 #tray:hover,
 #battery:hover,
 #network:hover,
 #bluetooth:hover,
 #pulseaudio:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* 20% White Highlight */
-    border-radius: 10px; /* Rounded highlight */
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 10px; 
 }
 
-/* --- TRAY SPECIFIC FIXES --- */
+
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
@@ -78,34 +63,30 @@ window#waybar {
     background-color: #eb4d4b;
 }
 
-/* === The Dynamic Island Media Player === */
+
 
 #mpris {
-    /* Hidden state (when nothing is playing) */
     min-width: 0px;
     padding: 0px;
     margin: 4px 0px;
     opacity: 0;
-    /* This ensures it shrinks to absolute zero */
     font-size: 0px;
 }
 
 #mpris.playing,
 #mpris.paused {
-    /* Visible state */
     min-width: 80px;
     padding: 4px 16px;
     margin: 4px 3px;
     opacity: 1;
     font-size: 14px;
     background-color: #000000;
-    /* Optional: Different color for media? saneAspect keeps it black usually */
 }
 
-/* === Workspaces === */
+
 
 #workspaces {
-    padding: 0px 8px; /* Tighter padding for the container */
+    padding: 0px 8px;
 }
 
 #workspaces button {
@@ -119,18 +100,13 @@ window#waybar {
 
 #workspaces button.active {
     color: #ffffff;
-    min-width: 20px; /* The active dot expands slightly */
+    min-width: 20px; 
 }
 
 #workspaces button:hover {
     background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
 }
-
-/* === Right Modules === */
-
-/* Remove individual margins to make them look like a cluster if desired, 
-   but keeping them separate pills for now as per your "Black Island" request */
 
 #tray {
     background-color: #000000;
@@ -142,11 +118,11 @@ window#waybar {
 
 #battery.charging,
 #battery.plugged {
-    color: #a6e3a1; /* Green text when charging */
+    color: #a6e3a1; 
 }
 
 #battery.critical:not(.charging) {
-    color: #f38ba8; /* Red text when low */
+    color: #f38ba8; 
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
