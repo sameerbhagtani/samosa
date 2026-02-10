@@ -1,79 +1,162 @@
 * {
     color: #ffffff;
-
-    border: none;
-    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "CaskaydiaCove Nerd Font";
+    font-size: 14px;
+    font-weight: bold;
     min-height: 0;
-    font-family: "CaskaydiaCove Nerd Font";
-    font-size: 16px;
+
+    /* The "Bouncy" Animation - This is the key to the saneAspect feel */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 window#waybar {
     background-color: transparent;
 }
 
-.modules-left {
-    margin-left: 8px;
-}
+/* === The Modules === */
 
+/* Base style for all "Pills" */
+#clock,
+#workspaces,
+#mpris,
+#custom-expand-icon {
+    background-color: #000000;
+    border-radius: 20px; /* Increased radius for "Island" look */
+    padding: 4px 12px;
+    margin: 4px 3px;
+}
+/* #group-tray-expander,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio, */
+
+/* --- MERGED RIGHT MODULES (The One Big Pill) --- */
+
+/* --- UNIFIED RIGHT PILL (The Container) --- */
+/* This makes the whole right side one black pill */
 .modules-right {
-    margin-right: 8px;
-}
-
-#workspaces button {
-    all: initial;
-    padding: 0 20px;
-    margin: 0 3px;
-    min-width: 9px;
-
     background-color: #000000;
-    border-radius: 5px;
+    margin: 4px 10px; /* 4px top/bottom, 10px from screen edge */
+    padding: 2px 5px; /* Space inside the pill */
+    border-radius: 20px; /* Round corners for the container */
 }
 
-#workspaces button.empty {
-    opacity: 0.5;
-}
-
-#clock {
-    margin-left: 8.75px;
-    padding: 0 20px;
-
-    background-color: #000000;
-    border-radius: 5px;
-}
-
+/* --- INDIVIDUAL ICONS (Transparent & Centered) --- */
+/* Remove the black box from icons so they blend into the container */
 #tray,
 #battery,
 #network,
 #bluetooth,
 #pulseaudio {
-    min-width: 12px;
-    margin: 0 3px;
-    padding: 0 20px;
+    background-color: transparent;
+    color: #ffffff;
 
-    background-color: #000000;
-    border-radius: 5px;
-
+    /* Alignment Fixes */
+    padding: 0 8px; /* Spacing between icons */
+    margin: 0; /* No gaps between hover areas */
+    min-height: 24px; /* Ensures vertical centering */
 }
 
-#custom-expand-icon {
-    margin-right: 7px;
-    padding: 0 20px;
-
-    background-color: #000000;
-    border-radius: 5px;
-
+/* --- HOVER EFFECT --- */
+/* Highlights the icon with a light grey box when hovered */
+#tray:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 20% White Highlight */
+    border-radius: 10px; /* Rounded highlight */
 }
 
-tooltip {
-    padding: 2px;
-    background-color: #000000;
+/* --- TRAY SPECIFIC FIXES --- */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
 }
 
-#tray menu {
-    background-color: #000000;
-}
+/* === The Dynamic Island Media Player === */
 
-.hidden {
+#mpris {
+    /* Hidden state (when nothing is playing) */
+    min-width: 0px;
+    padding: 0px;
+    margin: 4px 0px;
     opacity: 0;
+    /* This ensures it shrinks to absolute zero */
+    font-size: 0px;
+}
+
+#mpris.playing,
+#mpris.paused {
+    /* Visible state */
+    min-width: 80px;
+    padding: 4px 16px;
+    margin: 4px 3px;
+    opacity: 1;
+    font-size: 14px;
+    background-color: #000000;
+    /* Optional: Different color for media? saneAspect keeps it black usually */
+}
+
+/* === Workspaces === */
+
+#workspaces {
+    padding: 0px 8px; /* Tighter padding for the container */
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 0px 2px;
+    border-radius: 15px;
+    color: #666666;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    min-width: 20px; /* The active dot expands slightly */
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* === Right Modules === */
+
+/* Remove individual margins to make them look like a cluster if desired, 
+   but keeping them separate pills for now as per your "Black Island" request */
+
+#tray {
+    background-color: #000000;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #a6e3a1; /* Green text when charging */
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8; /* Red text when low */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f38ba8;
+        color: #000000;
+    }
 }
