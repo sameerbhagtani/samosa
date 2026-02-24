@@ -177,5 +177,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo -e "\n\n***************************************"
 echo "*** Setup Complete! ***"
 echo "*** Please run the following command and then reboot to enjoy Samosa: ***"
-echo "yay -S --needed visual-studio-code-bin brave-bin ttf-cascadia-code-nerd walker elephant-calc elephant-clipboard elephant-symbols && elephant service enable"
+echo "yay -S --needed blueberry visual-studio-code-bin brave-bin ttf-cascadia-code-nerd walker elephant elephant-calc elephant-clipboard elephant-desktopapplications elephant-menus && elephant service enable"
 echo "***************************************"

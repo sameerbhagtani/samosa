@@ -22,7 +22,6 @@ hypridle
 hyprsunset
 hyprshot
 hyprpicker
-blueberry
 swaync
 swayosd
 wl-clipboard
