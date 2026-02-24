@@ -123,7 +123,8 @@ echo "iwd configuration complete."
 
 # Enable ly Display Manager
 echo -e "\n--- Enabling ly Service ---"
-systemctl enable ly.service
+sudo systemctl disable getty@tty2.service
+sudo systemctl enable ly@tty2.service
 
 # Add User to Groups
 echo -e "\n--- Adding $USER to necessary groups (video, audio, input) ---"
