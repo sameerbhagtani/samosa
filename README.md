@@ -38,7 +38,7 @@ curl -L https://raw.githubusercontent.com/sameerbhagtani/samosa/main/install.sh 
 > **NOTE:** Do not reboot. Perform this step right after step 2 without rebooting the system. Only reboot at the very end.
 
 ```bash
-yay -S --needed blueberry visual-studio-code-bin brave-bin ttf-cascadia-code-nerd walker elephant elephant-calc elephant-clipboard elephant-desktopapplications elephant-menus && elephant service enable
+yay -S --needed blueberry visual-studio-code-bin brave-bin ttf-cascadia-code-nerd walker elephant elephant-calc elephant-clipboard elephant-desktopapplications && elephant service enable
 ```
 
 ---
