@@ -42,3 +42,11 @@ yay -S --needed blueberry visual-studio-code-bin brave-bin ttf-cascadia-code-ner
 ```
 
 ---
+
+## Screenshots
+
+![Desktop](/screenshots/desktop.png)
+
+![Application Launcher](/screenshots/app-launcher.png)
+
+---
